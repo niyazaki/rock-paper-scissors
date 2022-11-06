@@ -52,14 +52,16 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   let res = "";
   let score = { human: 0, computer: 0 };
-  for (let i = 0; i < 5; i++) {
-    let computerSelection = getComputerChoice();
-    let playerSelection = prompt("Your move :", "rock");
-    let result = playRound(playerSelection, computerSelection);
-    score.human += result.score;
-    score.computer += 1 - result.score;
-    console.log(score);
-  }
+  /* TODO: changer le prompt et ajouter une variable dans la fonction
+    changer la partie score mise en commentaire pour qu'à partir de 5 parties.
+    Modifier le div pour afficher le score via le DOM.*/
+  let computerSelection = getComputerChoice();
+  let playerSelection = prompt("Your move :", "rock");
+  let result = playRound(playerSelection, computerSelection);
+  score.human += result.score;
+  score.computer += 1 - result.score;
+  console.log(score);
+  /*
   if (score.human > score.computer) {
     res = "You Win!";
   } else if (score.human < score.computer) {
@@ -68,6 +70,7 @@ function game() {
     res = "Draw";
   }
   console.log(res);
+  */
   return res;
 }
 
