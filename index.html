@@ -14,5 +14,29 @@
     <script src="script.js" defer></script>
     <title>Rock Paper Scissors</title>
   </head>
-  <body></body>
+  <body>
+    <div class="flex coups justify-around max-w-md p-6">
+      <button
+        onclick="playRound('Rock',getComputerChoice())"
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Rock
+      </button>
+      <button
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Paper
+      </button>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Scissors
+      </button>
+    </div>
+    <div
+      class="Score text-xl text-white bg-primary font-bold text-center max-w-md p-3"
+    >
+      Test
+    </div>
+  </body>
 </html>

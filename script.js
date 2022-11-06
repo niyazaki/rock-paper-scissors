@@ -71,4 +71,4 @@ function game() {
   return res;
 }
 
-game();
+/*game();*/
