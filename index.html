@@ -17,19 +17,19 @@
   <body>
     <div class="flex coups justify-around max-w-md p-6">
       <button
-        onclick="playRound('Rock',getComputerChoice())"
+        onclick="game('Rock')"
         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
       >
         Rock
       </button>
       <button
-        onclick="playRound('Paper',getComputerChoice())"
+        onclick="game('Paper')"
         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
       >
         Paper
       </button>
       <button
-        onclick="playRound('Scissors',getComputerChoice())"
+        onclick="game('Scissors')"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
         Scissors
@@ -38,7 +38,8 @@
     <div
       class="Score text-xl text-white bg-primary font-bold text-center max-w-md p-3"
     >
-      Test
+      <div id="score-sentence">Start by choosing your move!</div>
+      <div id="score-number">0 - 0</div>
     </div>
   </body>
 </html>

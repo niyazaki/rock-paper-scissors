@@ -1,4 +1,6 @@
 let choices = ["Rock", "Paper", "Scissors"];
+let score = { human: 0, computer: 0 };
+const NUMBER_OF_GAMES = 5;
 function getComputerChoice() {
   let choice = choices[Math.floor(Math.random() * choices.length)];
   console.log(choice);
@@ -49,29 +51,43 @@ function playRound(playerSelection, computerSelection) {
   return res;
 }
 
-function game() {
-  let res = "";
-  let score = { human: 0, computer: 0 };
-  /* TODO: changer le prompt et ajouter une variable dans la fonction
-    changer la partie score mise en commentaire pour qu'à partir de 5 parties.
-    Modifier le div pour afficher le score via le DOM.*/
+function resetScore() {
+  score.human = 0;
+  score.computer = 0;
+  let scoreSent = document.getElementById("score-sentence");
+  //scoreSent.textContent = "Start by choosing your move!";
+  let scoreNum = document.getElementById("score-number");
+  scoreNum.textContent = "0 - 0";
+  scoreSent.classList.remove("text-red-500");
+  scoreSent.classList.add("text-white");
+}
+function game(playerSelection) {
   let computerSelection = getComputerChoice();
-  let playerSelection = prompt("Your move :", "rock");
   let result = playRound(playerSelection, computerSelection);
+  let scoreNum = document.getElementById("score-number");
+  let scoreSent = document.getElementById("score-sentence");
+  if (score.human + score.computer == NUMBER_OF_GAMES) {
+    resetScore();
+  }
   score.human += result.score;
   score.computer += 1 - result.score;
   console.log(score);
-  /*
-  if (score.human > score.computer) {
-    res = "You Win!";
-  } else if (score.human < score.computer) {
-    res = "You Loose!";
-  } else {
-    res = "Draw";
-  }
-  console.log(res);
-  */
-  return res;
-}
 
-/*game();*/
+  scoreSent.textContent = result.sentence;
+  scoreNum.textContent = [score.human, "-", score.computer].join(" ");
+
+  if (score.human + score.computer == NUMBER_OF_GAMES) {
+    // The game is a best of NUMBER_OF_GAMES. It musts end after that number of game
+    if (score.human > score.computer) {
+      res = "You Win!";
+    } else if (score.human < score.computer) {
+      res = "You Loose!";
+    } else {
+      res = "Draw";
+    }
+    console.log(res);
+    scoreSent.classList.remove("text-white");
+    scoreSent.classList.add("text-red-500");
+    scoreSent.textContent = res;
+  }
+}
